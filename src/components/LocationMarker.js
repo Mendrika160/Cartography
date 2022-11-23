@@ -1,9 +1,9 @@
 import React , { useState, useEffect } from 'react';
 import { Marker, Popup , useMap} from 'react-leaflet';
-//import L from 'leaflet';
-import icon from './Constant.js';
 
-const LocationMarker = () => {
+
+
+const LocationMarker = ({latlng,marker}) => {
 
     const [position,setPosition] = useState(null);
     const [bbox,setBbox] = useState([]);
@@ -19,7 +19,7 @@ const LocationMarker = () => {
     },[map]);
 
     return position === null ? null : (
-        <Marker position={position} icon={icon}>
+        <Marker position={latlng} icon={marker}>
             <Popup>
                 You are here. <br />
                 Map bbox: <br />
