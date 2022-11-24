@@ -1,12 +1,12 @@
-import React , { useState, useEffect } from 'react';
+import React , { useEffect } from 'react';
 import { Marker, Popup , useMap} from 'react-leaflet';
 
 
 
-const LocationMarker = ({latlng,marker}) => {
+const LocationMarker = ({position,setPosition,marker}) => {
 
-    const [position,setPosition] = useState(null);
-    const [bbox,setBbox] = useState([]);
+    //const [position,setPosition] = useState(null);
+    
     const map = useMap();
 
     useEffect(() => {
@@ -14,19 +14,13 @@ const LocationMarker = ({latlng,marker}) => {
             setPosition(e.latlng);
             map.flyTo(e.latlng, map.getZoom());
             
-            setBbox(e.bounds.toBBoxString().split(","));
-        })
-    },[map]);
+        });
+    },[map,setPosition]);
 
     return position === null ? null : (
-        <Marker position={latlng} icon={marker}>
+        <Marker position={position} icon={marker}>
             <Popup>
-                You are here. <br />
-                Map bbox: <br />
-                <b>Southwest lng</b>: {bbox[0]} <br />
-                <b>Southwest lat</b>: {bbox[1]} <br />
-                <b>Northeast lng</b>: {bbox[2]} <br />
-                <b>Northeast lat</b>: {bbox[3]}
+                You are here. 
             </Popup>
         </Marker>
     );
