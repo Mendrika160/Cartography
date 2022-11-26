@@ -1,16 +1,18 @@
 
 import React, {useState } from "react";
-import { MapContainer, TileLayer,LayersControl, Marker,Popup } from "react-leaflet";
+import { MapContainer, TileLayer,LayersControl, Marker,Popup, GeoJSON } from "react-leaflet";
 import LocationMarker from "./LocationMarker";
 import { defaultIcon, employementIcon, parkIcon } from './Icons.js';
-
+import geoData from '../data/map.json'
 
 
 const Map = () => {
   
+  const data = geoData.features;
+  console.log(geoData.features);
   const collapsed = false;
   const [position, setPosition] = useState(null)
-  
+
   return (
     <div className="container">
       <MapContainer
@@ -19,6 +21,8 @@ const Map = () => {
             zoom={15}
             maxZoom={28}
       >
+        
+
         <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -48,16 +52,10 @@ const Map = () => {
               />
           </LayersControl.BaseLayer>
           
-          <LayersControl.Overlay name="Marker with popup">
-            
-            <Marker position={[-18.910947998589823,47.52800527082459]} icon={employementIcon}>
-              <Popup>
-                  You are here. 
-              </Popup>
-            </Marker>
-          </LayersControl.Overlay>
+         
 
           <LayersControl.Overlay name="park">
+          <GeoJSON data={geoData.features} />
             <Marker position={[-18.916066615365907,47.52613260435342]} icon={parkIcon}>
               <Popup>
                   You are here. 
