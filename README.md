@@ -6,5 +6,5 @@ projet fin d'annee en M1
 * npm start  
 
 # Fonctionality  
-1 Recherche des lieu par leur nom (ex : Zomatel ,...) data apesaina eto Geojson (ao amin' ny src/data/map.json)  
-2 Faire itineraire de ma position jusqu'au lieu recherche  
+1 Search a place by name (ex : Zomatel ,...) We use  Geojson here(you can find this data in  src/data/map.json)  
+2 make the route from my current position to the place found.  
