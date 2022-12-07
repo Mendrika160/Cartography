@@ -2,11 +2,8 @@ import React , { useEffect } from 'react';
 import { Marker, Popup , useMap} from 'react-leaflet';
 
 
-
 const LocationMarker = ({position,setPosition,marker}) => {
 
-    //const [position,setPosition] = useState(null);
-    
     const map = useMap();
 
     useEffect(() => {

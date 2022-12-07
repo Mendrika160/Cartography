@@ -3,7 +3,9 @@
 	"features":[
 		{
 			"type":"Feature",
-			"properties":{},
+			"properties":{
+				"place": "Hotel pietra" 
+			},
 			"geometry":{
 				"coordinates":[47.0793118088811,-21.4549392234928],
 				"type":"Point"
@@ -11,7 +13,9 @@
 		},
 		{
 			"type":"Feature",
-			"properties":{},
+			"properties":{
+				"place": "Zomatel"
+			},
 			"geometry":{
 				"coordinates":[47.07747193335828,-21.455077001314123],
 				"type":"Point"
@@ -19,7 +23,9 @@
 		},
 		{
 			"type":"Feature",
-			"properties":{},
+			"properties":{
+				"place": "Hotel Colbert"
+			},
 			"geometry":{
 				"coordinates":[47.088764937542834,-21.446298342704353],
 				"type":"Point"
@@ -27,7 +33,9 @@
 		},
 		{
 			"type":"Feature",
-			"properties":{},
+			"properties":{
+				"place": "ENI Ecole National d'Informatique"
+			},
 			"geometry":{
 				"coordinates":[47.09265619183316,-21.441871283706348],
 				"type":"Point"
@@ -36,6 +44,7 @@
 			{
 				"type":"Feature",
 				"properties":{
+					"place": "Andrainjato"
 
 				},
 				"geometry":{
