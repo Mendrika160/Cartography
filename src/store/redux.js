@@ -1,13 +1,15 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+
 const placeSlice = createSlice({
     name: "places",
-    initialState : null,
+    initialState : [],
 
     reducers: {
         searchPlace : (state, action) => {
             //{ type : "SEARCH_PLACE", payload : "text"}
             state = action.payload;
-            console.log("state", state);
+            console.log("redux",state);
+            //console.log("state", state[0].type);
             return state;
             
         }

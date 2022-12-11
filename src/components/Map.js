@@ -1,22 +1,29 @@
 
 import React, {useState } from "react";
-import { MapContainer, TileLayer,LayersControl} from "react-leaflet";
+import { MapContainer, TileLayer,LayersControl,Marker,Popup } from "react-leaflet";
+//import MarkerClusterGroup from 'react-leaflet-cluster';
 import LocationMarker from "./LocationMarker";
-import { defaultIcon } from './Icons.js';
-
+import { defaultIcon,parkIcon } from './Icons.js';
+import { useSelector } from "react-redux";
+import data from '../data/places.json'
+import MultipleMarker from "./MultipleMarker";
 const Map = () => {
 
-  
+  const [position, setPosition] = useState(null);
+  //const places = useSelector((state) => state.places);
   const collapsed = false;
-  const [position, setPosition] = useState(null)
-
+  const pos = [	-18.766947, 46.869107]
+  const pos1 = [47.0774719, -21.4550770]
+  
+  console.log("places :",data.places);
+  
   return (
     <div className="container">
 
       <MapContainer
             className="map__container"
-            center={position || [	-18.766947, 46.869107]}
-            zoom={15}
+            center={pos}
+            zoom={8}
             maxZoom={28}
       >
         
@@ -24,13 +31,19 @@ const Map = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         
         <LocationMarker
-              position={position}
-              marker={defaultIcon}
-              setPosition={setPosition}
-              
-          />
+          position={position}
+          setPosition={setPosition}
+          marker={parkIcon}
+        />
+      
+        <MultipleMarker marker={defaultIcon}/>  
+        
+          
+        
+      
       
         <LayersControl 
           position="topright"

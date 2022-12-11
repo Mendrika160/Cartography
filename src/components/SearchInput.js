@@ -1,5 +1,6 @@
 import React,{useState } from 'react';
-import mapData from '../data/map.json'
+//import mapData from '../data/map.json'
+import mapData from '../data/places.json'
 import { useDispatch } from 'react-redux'
 import {  searchPlace } from '../store/redux'
 
@@ -10,8 +11,8 @@ function SearchInput() {
   const [text, setText] = useState("");
 
   //filter all places by name (place) 
-  const test = mapData.features.filter(p => p.properties.place === text);
-  
+  const test = mapData.places.filter(p => p.name === text);
+  console.log("result",test);
 
   const findPlace = () => {
     dispatch(searchPlace(test))

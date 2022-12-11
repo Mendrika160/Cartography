@@ -1,0 +1,32 @@
+{
+    "places": [
+        {
+            "id": 1,
+            "name": "Zomatel",
+            "coordinates": [-21.454799,47.086746]
+        },
+        {
+            "id": 2,
+            "name": "301-Cyber",
+            "coordinates": [-21.457198,47.090124]
+        },
+        {
+            "id": 3,
+            "name": "Tombotsoa Hotel",
+            "coordinates": [-21.450248,47.087712]
+        },
+        {
+            "id": 4,
+            "name": "Baby food",
+            "coordinates": [-21.441847,47.092636]
+        },
+        {
+            "id": 5,
+            "name": "Jovena Tsaramandroso",
+            "coordinates": [-21.463621,47.080167]
+        }
+
+
+    ]
+
+}
