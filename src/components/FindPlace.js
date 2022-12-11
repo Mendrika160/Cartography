@@ -1,28 +1,40 @@
-import React from 'react'
+import React,{useEffect} from 'react'
+import data from '../data/places.json'
+
+import {Marker,Popup,useMap} from 'react-leaflet'
 import {useSelector} from 'react-redux';
-import { Marker,Popup } from 'react-leaflet';
-//import {MarkerClusterGroup} from 'react-leaflet-markercluster'
 
 
-export default function FindPlace({marker}) {
+function FindPlace({marker}) {
 
     const places = useSelector((state) => state.places);
-    
-    console.log("places",places)
+    console.log("multiple marker place ",places);
+    const map = useMap();
+    useEffect(() => {
+        map.locate().on("locationfound",(e) => {
+            console.log(e.latlng);
+            map.flyTo(e.latlng, map.getZoom());
+            
+        });
+    },[map,places]);
 
     return (
-    
-        places === null ? null : (
-        
-            <Marker position={places[0].geometry.coordinates} icon={marker}>
-                <Popup>
-                    You are now here. 
-                </Popup>
-            </Marker> )
+        <>
+            {places.map(place => { 
+                return(
 
+                    <Marker key={place.id} position={place.coordinates} icon={marker}>
+                        <Popup>
+                        {place.name}
+                        </Popup>
+
+                    </Marker>
+                )
             
-    
-        
-    )
 
+            })}
+        </>
+    )
 }
+
+export default FindPlace

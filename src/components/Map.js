@@ -6,7 +6,7 @@ import LocationMarker from "./LocationMarker";
 import { defaultIcon,parkIcon } from './Icons.js';
 import { useSelector } from "react-redux";
 import data from '../data/places.json'
-import MultipleMarker from "./MultipleMarker";
+import FindPlace from "./FindPlace";
 const Map = () => {
 
   const [position, setPosition] = useState(null);
@@ -39,7 +39,7 @@ const Map = () => {
           marker={parkIcon}
         />
       
-        <MultipleMarker marker={defaultIcon}/>  
+        <FindPlace marker={defaultIcon}/>  
         
           
         

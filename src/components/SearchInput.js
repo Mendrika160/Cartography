@@ -23,6 +23,7 @@ function SearchInput() {
 
     <>
     
+
       <div className="col-12 col-lg-auto mb-3 mb-lg-0">
           <input 
                 
@@ -37,6 +38,8 @@ function SearchInput() {
             className='col-12 col-lg-auto mb-3 mb-lg-0 btn btn-primary'
             onClick={findPlace}
           >Search</button>
+    
+      
           
     </>
       
