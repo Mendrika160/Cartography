@@ -1,26 +1,23 @@
 import React,{useEffect} from 'react'
-import data from '../data/places.json'
 
 import {Marker,Popup,useMap} from 'react-leaflet'
 import {useSelector} from 'react-redux';
 
 
-function FindPlace({marker}) {
+function FindPlace({marker,setSearchPosition}) {
 
     const places = useSelector((state) => state.places);
-    console.log("multiple marker place ",places);
-    const map = useMap();
-    useEffect(() => {
-        map.locate().on("locationfound",(e) => {
-            console.log(e.latlng);
-            map.flyTo(e.latlng, map.getZoom());
-            
-        });
-    },[map,places]);
+    const result = places.map( place => { return place.coordinates });
+    console.log("ressult : ",result)
+    
+    
+        //setSearchPosition(result);
+    
 
     return (
         <>
             {places.map(place => { 
+                
                 return(
 
                     <Marker key={place.id} position={place.coordinates} icon={marker}>
@@ -30,8 +27,6 @@ function FindPlace({marker}) {
 
                     </Marker>
                 )
-            
-
             })}
         </>
     )

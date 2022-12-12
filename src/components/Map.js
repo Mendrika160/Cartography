@@ -1,28 +1,37 @@
 
-import React, {useState } from "react";
-import { MapContainer, TileLayer,LayersControl,Marker,Popup } from "react-leaflet";
-//import MarkerClusterGroup from 'react-leaflet-cluster';
+import React, {useEffect, useState } from "react";
+import { MapContainer, TileLayer,LayersControl } from "react-leaflet";
 import LocationMarker from "./LocationMarker";
 import { defaultIcon,parkIcon } from './Icons.js';
-import { useSelector } from "react-redux";
-import data from '../data/places.json'
+
+//import data from '../data/places.json'
 import FindPlace from "./FindPlace";
+import RoutingMachine from './RoutingMachine';
 const Map = () => {
 
   const [position, setPosition] = useState(null);
+  const [searchPosition,setSearchPosition] = useState(null);
   //const places = useSelector((state) => state.places);
   const collapsed = false;
-  const pos = [	-18.766947, 46.869107]
-  const pos1 = [47.0774719, -21.4550770]
   
-  console.log("places :",data.places);
   
+  
+  console.log("position :",position);
+  /*
+  useEffect(() => {
+    
+    if(searchPosition !== null){
+      pos.current = searchPosition;
+    }
+    
+  },[searchPosition,position]);
+  */
   return (
     <div className="container">
 
       <MapContainer
             className="map__container"
-            center={pos}
+            center={[-21.457198,47.090124]}
             zoom={8}
             maxZoom={28}
       >
@@ -32,19 +41,29 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        
         <LocationMarker
           position={position}
           setPosition={setPosition}
           marker={parkIcon}
         />
       
-        <FindPlace marker={defaultIcon}/>  
+        <FindPlace 
+          marker={defaultIcon}
+          searchPosition={searchPosition}
+          setSearchPosition={setSearchPosition}
         
-          
+        /> 
+  
+      
         
+
+        <RoutingMachine 
+          firstPosition={position}
+          secondPosition={searchPosition}
+          />
       
-      
+        
+
         <LayersControl 
           position="topright"
           collapsed={collapsed}
