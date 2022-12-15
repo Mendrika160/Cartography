@@ -1,21 +1,21 @@
 import React , { useEffect } from 'react';
 import { Marker, Popup , useMap} from 'react-leaflet';
+import { useDispatch } from 'react-redux';
+import { getUserPosition } from '../store/redux';
 
+const LocationMarker = ({position,marker}) => {
 
-const LocationMarker = ({position,setPosition,marker}) => {
-
-    const map = useMap()
+    const dispatch = useDispatch();
+    const map = useMap();
 
     useEffect(() => {
         map.locate().on("locationfound",(e) => {
-            setPosition(e.latlng);
-            console.log(e.latlng);
+            dispatch(getUserPosition([e.latlng.lat,e.latlng.lng]));
             map.flyTo(e.latlng, 8,map.getZoom());
             
         });
-    },[map,setPosition]);
+    },[map,dispatch]);
     
-
     return position === null ? null : (
         <Marker  position={position} icon={marker}>
             <Popup>

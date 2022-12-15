@@ -3,29 +3,23 @@ import React, {useEffect, useState } from "react";
 import { MapContainer, TileLayer,LayersControl } from "react-leaflet";
 import LocationMarker from "./LocationMarker";
 import { defaultIcon,parkIcon } from './Icons.js';
-
+import { useSelector } from "react-redux/es/exports";
 //import data from '../data/places.json'
 import FindPlace from "./FindPlace";
 import RoutingMachine from './RoutingMachine';
 const Map = () => {
 
-  const [position, setPosition] = useState(null);
-  const [searchPosition,setSearchPosition] = useState(null);
-  //const places = useSelector((state) => state.places);
+  const {  placeFindPosition, userPosition ,placePosition } = useSelector((state) => state.places);
+
+  
   const collapsed = false;
+  console.log("user position MAP",userPosition)
+  console.log("findplacePosition MAP",placeFindPosition)
+  console.log("placePosition MAP",placePosition)
   
   
   
-  console.log("position :",position);
-  /*
-  useEffect(() => {
-    
-    if(searchPosition !== null){
-      pos.current = searchPosition;
-    }
-    
-  },[searchPosition,position]);
-  */
+
   return (
     <div className="container">
 
@@ -42,40 +36,32 @@ const Map = () => {
         />
 
         <LocationMarker
-          position={position}
-          setPosition={setPosition}
           marker={parkIcon}
+          position={userPosition}
         />
       
         <FindPlace 
           marker={defaultIcon}
-          searchPosition={searchPosition}
-          setSearchPosition={setSearchPosition}
-        
         /> 
   
-      
-        
-
-        <RoutingMachine 
-          firstPosition={position}
-          secondPosition={searchPosition}
-          />
-      
+      {placePosition === null ? null :  <RoutingMachine startPosition={userPosition} endPosition={placePosition} /> }      
         
 
         <LayersControl 
           position="topright"
           collapsed={collapsed}
         >
-        
           <LayersControl.BaseLayer checked name="Basic map" >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
           </LayersControl.BaseLayer>
-
+          <LayersControl.Overlay>
+            
+          
+      
+          </LayersControl.Overlay>
         </LayersControl>
 
       </MapContainer>

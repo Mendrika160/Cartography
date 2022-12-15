@@ -4,19 +4,16 @@ import {Marker,Popup,useMap} from 'react-leaflet'
 import {useSelector} from 'react-redux';
 
 
-function FindPlace({marker,setSearchPosition}) {
+function FindPlace({marker}) {
 
-    const places = useSelector((state) => state.places);
-    const result = places.map( place => { return place.coordinates });
-    console.log("ressult : ",result)
+    const places = useSelector((state) => state.places );
+    //const result = places.map( place => { return place.coordinates });
     
-    
-        //setSearchPosition(result);
-    
+   
 
     return (
         <>
-            {places.map(place => { 
+            { places.placeFindPosition.map(place => { 
                 
                 return(
 
