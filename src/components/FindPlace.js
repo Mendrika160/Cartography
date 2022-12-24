@@ -1,30 +1,27 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 
 import {Marker,Popup,useMap} from 'react-leaflet'
 import {useSelector} from 'react-redux';
 
+function FindPlace({marker,places}) {
+    //const [existPlace,setExistPlace] = useState(false)
+    //const places = useSelector((state) => state.places );
+    console.log("places findplaces",places)
+    const map = useMap();
+    useEffect( () => {
 
-function FindPlace({marker}) {
+        map.flyTo(places.coordinates, 8);
 
-    const places = useSelector((state) => state.places );
-    //const result = places.map( place => { return place.coordinates });
-    
-   
+    },[places,map])
 
     return (
         <>
-            { places.placeFindPosition.map(place => { 
+        <Marker position={places.coordinates} icon={marker}>
+            <Popup>{places.name}</Popup>
+        </Marker>
+            
                 
-                return(
-
-                    <Marker key={place.id} position={place.coordinates} icon={marker}>
-                        <Popup>
-                        {place.name}
-                        </Popup>
-
-                    </Marker>
-                )
-            })}
+                
         </>
     )
 }

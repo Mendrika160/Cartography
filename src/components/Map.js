@@ -13,10 +13,15 @@ const Map = () => {
 
   
   const collapsed = false;
-  console.log("user position MAP",userPosition)
   console.log("findplacePosition MAP",placeFindPosition)
+  console.log("findplacePosition id MAP",placeFindPosition.id)
   console.log("placePosition MAP",placePosition)
+
   
+  
+  /*
+  console.log("user position MAP",userPosition)
+  */
   
   
 
@@ -40,9 +45,10 @@ const Map = () => {
           position={userPosition}
         />
       
-        <FindPlace 
-          marker={defaultIcon}
-        /> 
+      {
+        placeFindPosition.id && <FindPlace places={placeFindPosition} marker={defaultIcon}/> 
+      }
+        
   
       {placePosition === null ? null :  <RoutingMachine startPosition={userPosition} endPosition={placePosition} /> }      
         

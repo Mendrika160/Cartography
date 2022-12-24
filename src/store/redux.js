@@ -3,7 +3,11 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 const placeSlice = createSlice({
     name: "places",
     initialState : {
-        placeFindPosition : [],
+        placeFindPosition :{
+            "id": null,
+            "name": "",
+            "coordinates": null
+        },
         userPosition : null,
         placePosition : null
     },
@@ -17,11 +21,13 @@ const placeSlice = createSlice({
         },
         searchPlace : (state, action) => {
             //{ type : "SEARCH_PLACE", payload : "text"}
-            action.payload.forEach(result => {
-                //console.log("result place ",result)
-                state.placeFindPosition.push(result);
-                state.placePosition = result.coordinates;
-            })
+            console.log("action payload :",action.payload[0])
+            state.placeFindPosition.id = action.payload[0].id;
+            state.placeFindPosition.name = action.payload[0].name;
+            state.placeFindPosition.coordinates = action.payload[0].coordinates;
+            //console.log("position :",state.userPosition)
+            state.placePosition = state.placeFindPosition.coordinates;
+
             return state;
             
         }

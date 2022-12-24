@@ -12,7 +12,7 @@ function SearchInput() {
 
   //filter all places by name (place) 
   const test = mapData.places.filter(p => p.name === text);
-  console.log("result search",test);
+  
 
   const findPlace = () => {
     dispatch(searchPlace(test))

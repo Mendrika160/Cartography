@@ -7,6 +7,16 @@ const LocationMarker = ({position,marker}) => {
 
     const dispatch = useDispatch();
     const map = useMap();
+   
+    /*
+    useEffect(() => {
+        fetch('https://api.geoapify.com/v1/ipinfo?apiKey=YOUR_API_KEY')
+            .then(resp => resp.json())
+            .then((userLocationData) => {
+	        console.log(userLocationData);
+        });
+    })
+    */
 
     useEffect(() => {
         map.locate().on("locationfound",(e) => {

@@ -24,7 +24,14 @@
             "id": 5,
             "name": "Jovena Tsaramandroso",
             "coordinates": [-21.463621,47.080167]
+        },
+        {
+            "id": 5,
+            "name": "Aeroport Morondava",
+            "coordinates": [-20.287444,44.317054]
         }
+
+        
 
 
     ]
