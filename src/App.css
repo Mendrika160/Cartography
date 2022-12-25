@@ -10,3 +10,18 @@
 .input-search{
   margin: 10px;
 }
+.suggestion{
+  padding: 10px 0;
+  margin: 0;
+}
+.suggestion .suggestion-item{
+  cursor: pointer;
+  margin-right: 1px solid black;
+  margin-left: 1px solid black;
+  margin-bottom: 1px solid black;
+  
+}
+
+.suggestion .suggestion-item:hover{
+  background-color: rgb(201, 189, 189);
+}

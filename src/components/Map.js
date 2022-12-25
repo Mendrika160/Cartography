@@ -1,11 +1,12 @@
 
-import React, {useEffect, useState } from "react";
+import React from "react";
 import { MapContainer, TileLayer,LayersControl } from "react-leaflet";
 import LocationMarker from "./LocationMarker";
 import { defaultIcon,parkIcon } from './Icons.js';
 import { useSelector } from "react-redux/es/exports";
 //import data from '../data/places.json'
 import FindPlace from "./FindPlace";
+import SearchInput from "./SearchInput";
 import Routing from './Routing';
 const Map = () => {
 
@@ -13,11 +14,12 @@ const Map = () => {
 
   
   const collapsed = false;
+  /*
   console.log("findplacePosition MAP",placeFindPosition)
   console.log("findplacePosition id MAP",placeFindPosition.id)
   console.log("placePosition MAP",placePosition)
 
-  
+  */
   
   /*
   console.log("user position MAP",userPosition)
@@ -27,6 +29,8 @@ const Map = () => {
 
   return (
     <div className="container">
+
+      <SearchInput/>
 
       <MapContainer
             className="map__container"

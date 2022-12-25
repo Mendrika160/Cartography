@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 
 import {Marker,Popup,useMap} from 'react-leaflet'
-import {useSelector} from 'react-redux';
+
 
 function FindPlace({marker,places}) {
     //const [existPlace,setExistPlace] = useState(false)
@@ -9,7 +9,6 @@ function FindPlace({marker,places}) {
     console.log("places findplaces",places)
     const map = useMap();
     useEffect( () => {
-
         map.flyTo(places.coordinates, 8);
 
     },[places,map])
