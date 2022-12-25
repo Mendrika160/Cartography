@@ -44,7 +44,7 @@ function SearchInput() {
   const inputBlur = () => {
     setTimeout(() =>{
       setSuggestion([]);
-    },100)
+    },1000)
 
   }
 
