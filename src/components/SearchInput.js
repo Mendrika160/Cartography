@@ -13,14 +13,25 @@ function SearchInput() {
   const [search,setSearch] = useState([]);
   const [suggestion,setSuggestion] = useState([]);
   const {places} = mapData;
+  const [hasValue,setHasValue] = useState(false)
 
   useEffect(() => {
     setSearch(places)
   },[places])
+
+  useEffect(() => {
+    if(text.length > 0){
+      setHasValue(true)
+    }else{
+      setHasValue(false)
+    }
+  },[text,hasValue])
   
   const onChangeHandler = (text) => {
   
     if(text.length > 0){
+    
+      // ig : Perform a global match (find all matches rather than stopping after the first match)
       const regex = new RegExp(`${text}`,'ig');
       const result = search.filter(res => {
         return res.name.match(regex);
@@ -30,20 +41,25 @@ function SearchInput() {
       setSuggestion([])
     }
     
-    
     setText(text);
-    console.log("suggestion",suggestion);
+    
     
   }
-
+  //const test = mapData.places.filter(p => p.name === text);
   const findPlace = () => {
+    // find the first match and stop
+    const regex = new RegExp(`${text}`,'i');
+    const test = mapData.places.filter(p => p.name.match(regex));
+    console.log("test",test)
     dispatch(searchPlace(test))
+    console.log("first suggestion",suggestion)
     
   }
 
   const inputBlur = () => {
     setTimeout(() =>{
       setSuggestion([]);
+      setHasValue(false);
     },1000)
 
   }
@@ -51,13 +67,13 @@ function SearchInput() {
   const suggestHandler = (val) => {
     setText(val)
   }
-  const test = mapData.places.filter(p => p.name === text);
+  
   return (
 
     <>
     
-
-      <div className="col-12 col-lg-auto mb-3 mb-lg-0">
+    <div className="row align-items-start">
+       <div className="col-xl-9 col-lg-9 mb-3 mb-lg-0">
           <input 
                 
                 onChange={(e) => onChangeHandler(e.target.value)}
@@ -67,6 +83,7 @@ function SearchInput() {
                 aria-label="Search" 
                 onBlur={inputBlur}
             />
+            { hasValue &&
             <div className='suggestion'>
               {suggestion.map((s) => {
                 return <p key={s.id} 
@@ -75,11 +92,15 @@ function SearchInput() {
                           >{s.name}</p>
               })}
             </div>
+            }
         </div>
         <button 
-            className='col-12 col-lg-auto mb-3 mb-lg-0 btn btn-primary'
+            className='col-xl-3 col-lg-3 mb-3 mb-lg-0 btn btn-primary btn-search'
             onClick={findPlace}
           >Search</button>
+    </div>
+     
+        
     
       
           

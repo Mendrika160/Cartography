@@ -1,4 +1,7 @@
+
 .map__container{
+  position: relative;
+  top : 30px;
   height : 95vh;
   width: auto;
 }
@@ -13,6 +16,9 @@
 .suggestion{
   padding: 10px 0;
   margin: 0;
+  border : 1px solid rgb(120, 175, 219);
+  border-top: 0;
+  z-index: 1;
 }
 .suggestion .suggestion-item{
   cursor: pointer;
@@ -24,4 +30,10 @@
 
 .suggestion .suggestion-item:hover{
   background-color: rgb(201, 189, 189);
+}
+
+.btn-search{
+  margin-top:-1px;
+  padding-bottom: 10px;
+
 }

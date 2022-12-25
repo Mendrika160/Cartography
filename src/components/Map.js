@@ -30,6 +30,7 @@ const Map = () => {
   return (
     <div className="container">
 
+      
       <SearchInput/>
 
       <MapContainer
