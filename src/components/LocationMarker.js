@@ -21,7 +21,7 @@ const LocationMarker = ({position,marker}) => {
     useEffect(() => {
         map.locate().on("locationfound",(e) => {
             dispatch(getUserPosition([e.latlng.lat,e.latlng.lng]));
-            map.flyTo(e.latlng, 8,map.getZoom());
+            map.flyTo(e.latlng,map.getZoom());
             
         });
     },[map,dispatch]);

@@ -26,10 +26,16 @@
             "coordinates": [-21.463621,47.080167]
         },
         {
-            "id": 5,
+            "id": 6,
             "name": "Aeroport Morondava",
             "coordinates": [-20.287444,44.317054]
+        },
+        {
+            "id": 7,
+            "name": "Agence BOA",
+            "coordinates": [-18.920096,47.521447]
         }
+        
 
         
 

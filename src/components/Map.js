@@ -6,7 +6,7 @@ import { defaultIcon,parkIcon } from './Icons.js';
 import { useSelector } from "react-redux/es/exports";
 //import data from '../data/places.json'
 import FindPlace from "./FindPlace";
-import RoutingMachine from './RoutingMachine';
+import Routing from './Routing';
 const Map = () => {
 
   const {  placeFindPosition, userPosition ,placePosition } = useSelector((state) => state.places);
@@ -31,7 +31,7 @@ const Map = () => {
       <MapContainer
             className="map__container"
             center={[-21.457198,47.090124]}
-            zoom={8}
+            zoom={16}
             maxZoom={28}
       >
         
@@ -50,7 +50,7 @@ const Map = () => {
       }
         
   
-      {placePosition === null ? null :  <RoutingMachine startPosition={userPosition} endPosition={placePosition} /> }      
+      {placePosition === null ? null :  <Routing from={userPosition} to={placePosition} /> }      
         
 
         <LayersControl 
