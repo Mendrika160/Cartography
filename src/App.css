@@ -11,14 +11,21 @@
 }
 
 .input-search{
-  margin: 10px;
+  
+  
+  width:95%;
 }
 .suggestion{
   padding: 10px 0;
   margin: 0;
-  border : 1px solid rgb(120, 175, 219);
+  
   border-top: 0;
   z-index: 1;
+  max-height: 100px;
+  overflow: hidden;
+}
+.suggestion-toggle{
+  display: none;
 }
 .suggestion .suggestion-item{
   cursor: pointer;
@@ -28,6 +35,8 @@
   
 }
 
+
+
 .suggestion .suggestion-item:hover{
   background-color: rgb(201, 189, 189);
 }
@@ -35,5 +44,40 @@
 .btn-search{
   margin-top:-1px;
   padding-bottom: 10px;
+
+}
+
+#loader{
+  
+  position: relative;
+  top:46%;
+  left: 47%;
+  display: none;
+  z-index: 500;
+  border: 10px solid lightgrey;
+  border-top: 10px solid blue;
+  border-right: 10px solid red;
+  border-bottom: 10px solid yellow;
+  border-left: 10px solid green ;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+footer {
+  margin-top: 70px;
+  border-top: 1px solid rgb(216, 213, 213);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }

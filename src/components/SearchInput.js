@@ -1,4 +1,4 @@
-import React,{useState ,useEffect} from 'react';
+import React,{useState ,useEffect, useRef} from 'react';
 //import mapData from '../data/map.json'
 import mapData from '../data/places.json'
 import { useDispatch } from 'react-redux'
@@ -13,24 +13,24 @@ function SearchInput() {
   const [search,setSearch] = useState([]);
   const [suggestion,setSuggestion] = useState([]);
   const {places} = mapData;
-  const [hasValue,setHasValue] = useState(false)
+  const hasValue = useRef(false)
 
   useEffect(() => {
     setSearch(places)
   },[places])
 
   useEffect(() => {
-    if(text.length > 0){
-      setHasValue(true)
+    if(text.length > 2){
+      hasValue.current = true;
     }else{
-      setHasValue(false)
+      hasValue.current = false;
     }
-  },[text,hasValue])
+  },[text])
   
   const onChangeHandler = (text) => {
   
-    if(text.length > 0){
-    
+    if(text.length > 2){
+      hasValue.current = true
       // ig : Perform a global match (find all matches rather than stopping after the first match)
       const regex = new RegExp(`${text}`,'ig');
       const result = search.filter(res => {
@@ -59,13 +59,15 @@ function SearchInput() {
   const inputBlur = () => {
     setTimeout(() =>{
       setSuggestion([]);
-      setHasValue(false);
-    },1000)
+      hasValue.current = false;
+    },400)
 
   }
 
   const suggestHandler = (val) => {
-    setText(val)
+    setText(val);
+    hasValue.current = false;
+    
   }
   
   return (
@@ -83,8 +85,8 @@ function SearchInput() {
                 aria-label="Search" 
                 onBlur={inputBlur}
             />
-            { hasValue &&
-            <div className='suggestion'>
+          
+            <div className="suggestion">
               {suggestion.map((s) => {
                 return <p key={s.id} 
                           className='suggestion-item'
@@ -92,10 +94,10 @@ function SearchInput() {
                           >{s.name}</p>
               })}
             </div>
-            }
+            
         </div>
         <button 
-            className='col-xl-3 col-lg-3 mb-3 mb-lg-0 btn btn-primary btn-search'
+            className=' col-xl-3 col-lg-3 mb-3 mb-lg-0 btn btn-primary btn-search'
             onClick={findPlace}
           >Search</button>
     </div>

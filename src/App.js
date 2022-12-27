@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.js'
 import Map from './components/Map.js';
 import { Provider} from 'react-redux'
 import {store} from './store/redux'
+import Footer from './components/Footer';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <Provider store={store}>
       <Navbar />
       <Map/>
+      <Footer />
 
     </Provider>
    
