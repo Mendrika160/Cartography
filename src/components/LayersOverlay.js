@@ -1,7 +1,8 @@
 import React from 'react'
-import { LayerGroup, LayersControl,Marker, Popup } from 'react-leaflet';
-
-export const LayersOverlay = ({data}) => {
+import { LayerGroup, LayersControl } from 'react-leaflet';
+import CustomMarker from './CustomMarker';
+import { blueIcon } from './Icons';
+export const LayersOverlay = ({data,goHere,startHere}) => {
 
     const groups = {};
     
@@ -12,16 +13,24 @@ export const LayersOverlay = ({data}) => {
         }
         groups[item.type].push(item);
     });
-    console.log("goup",groups)
+    
 
     const overlays = Object.entries(groups).map((type,i) => (
         
         <LayersControl.Overlay name={type[0]} key={type[0]}>
             <LayerGroup>
                 {type[1].map(p => ( 
-                    <Marker key={p.id} position={p.coordinates}>
-                        <Popup>{p.name}</Popup>
-                    </Marker>
+                    <CustomMarker
+                    imgIcon={blueIcon} 
+                    key={p.id}
+                    position={p.coordinates}
+                    textPopup={p.name}
+                    goHere={goHere}
+                    startHere={startHere}
+
+
+                    />
+                    
                 ))}
             </LayerGroup>
         

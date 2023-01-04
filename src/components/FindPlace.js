@@ -1,26 +1,31 @@
+
 import React,{useEffect} from 'react'
+import CustomMarker from './CustomMarker';
+import {useMap} from 'react-leaflet'
+import { greenIcon} from './Icons'
 
-import {Marker,Popup,useMap} from 'react-leaflet'
-
-
-function FindPlace({marker,places}) {
-    //const [existPlace,setExistPlace] = useState(false)
+function FindPlace({places,goHere,startHere}) {
+    
     //const places = useSelector((state) => state.places );
-    console.log("places findplaces",places)
     const map = useMap();
     useEffect( () => {
         map.flyTo(places.coordinates, 8);
 
     },[places,map])
 
+   
+
     return (
         <>
-        <Marker position={places.coordinates} icon={marker}>
-            <Popup>{places.name}</Popup>
-        </Marker>
+        
+        <CustomMarker 
+                    position={places.coordinates}
+                    imgIcon={greenIcon} 
+                    textPopup={places.name}
+                    goHere={goHere}
+                    startHere={startHere}
+                />
             
-                
-                
         </>
     )
 }

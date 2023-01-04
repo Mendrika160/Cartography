@@ -1,5 +1,6 @@
 import { useEffect,useRef } from "react";
 import L from "leaflet";
+import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import { useMap } from "react-leaflet";
@@ -14,6 +15,7 @@ const Routing = ({ from, to }) => {
   const map = useMap();
   
   const spinner = useRef(true);
+  
   useEffect(() => {
     if (!map) return;
 
@@ -29,20 +31,21 @@ const Routing = ({ from, to }) => {
         styles: [{ color: "#6FA1EC", weight: 4 }]
       },
       show: true,
+      addWaypoints:false,
       showAlternatives: true,
-      addWaypoints: true,
       fitSelectedRoutes: true
     })
       .on("routingstart",showLoader)
       .on('routesfound routingerror',hideLoader)
       .addTo(map);
-  
       
-
-    //return () => map.removeControl(routingControl);
+  
+    
+    return () => map.removeControl(routingControl);
+   
   }, [map, from,to]);
 
-  map.on('zoomstart', (e) =>{ spinner.current = false })
+  map.on('zoomstart', (e) =>{ spinner.current = true })
   map.on('zoomend', (e) =>{ spinner.current = false })
 
   
@@ -62,7 +65,13 @@ const Routing = ({ from, to }) => {
 
 };
 
+export const goHere = (routingControl) => {
 
+}
+
+export const startHere = () => {
+    
+}
 
 
 export default Routing;
