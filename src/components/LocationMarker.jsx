@@ -1,12 +1,12 @@
 import React , { useEffect } from 'react';
-import { useMap} from 'react-leaflet';
+import { useMap,Marker,Popup} from 'react-leaflet';
 import { useDispatch } from 'react-redux';
 import { getUserPosition } from '../store/redux';
-import CustomMarker from './CustomMarker'
-import {redIcon,defaultIcon} from './Icons'
+
+import {redIcon} from './Icons'
 
 
-const LocationMarker = ({position,goHere,startHere}) => {
+const LocationMarker = ({position}) => {
     
     const dispatch = useDispatch();
     
@@ -36,13 +36,10 @@ const LocationMarker = ({position,goHere,startHere}) => {
         <>
             {
             position === null ? null : 
-                <CustomMarker 
-                    position={position}
-                    textPopup='You are here'
-                    imgIcon={redIcon}
-                    goHere={goHere}
-                    startHere={startHere}
-                />
+                
+                <Marker position={position} icon={redIcon}>
+                    <Popup>You are here</Popup>
+                </Marker>
             }
         </>
     )

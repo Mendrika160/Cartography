@@ -4,7 +4,17 @@ import parkImg from '../img/marker/parks.png'
 import eventImg from '../img/marker/event.png'
 import defaultImg from '../img/marker/default.png'
 import blueImg from '../img/marker/marker-icon-blue.png'
-
+import hotelImg from '../img/marker/hotels.png'
+import hospitalImg from '../img/marker/health-medical.png'
+import pharmacyImg from '../img/marker/medical.png'
+import cyberImg from '../img/marker/internet.png'
+import stationmentImg from '../img/marker/transport.png'
+import schoolImg from '../img/marker/schools.png'
+import barsImg from '../img/marker/bars.png'
+import restaurentImg from '../img/marker/restaurants.png'
+import aeroportImg from '../img/marker/marqueur-aeroport.png'
+import bankImg from '../img/marker/bank.png'
+import stationServiceImg from  '../img/marker/electronics.png'
 
 export const greenIcon = new L.icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
@@ -14,6 +24,16 @@ export const greenIcon = new L.icon({
     popupAnchor: [1, -34],
     shadowSize: [41, 41]
   });
+
+  export const aeroportIcon = L.icon({
+
+    iconSize: [43, 44],
+    iconAnchor: [10, 41],
+    popupAnchor: [2, -40],
+    iconUrl: aeroportImg,
+    shadowAnchor: [4, 62],  // the same for the shadow
+    
+});
 
   export const redIcon = new L.icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
@@ -52,6 +72,121 @@ export const employementIcon = L.icon({
     
 });
 
+// bank icon
+export const bankIcon = L.icon({
+
+  iconSize: [53, 60],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: bankImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+
+
+// station service icon
+export const stationServiceIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: stationServiceImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+// restaurant icon
+export const restaurentIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: restaurentImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+// hotel icon
+export const hotelIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: hotelImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+// stationnement icon
+
+export const stationmentIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: stationmentImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+//cyber icon 
+export const cyberIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: cyberImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+// school icon
+
+export const schoolIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: schoolImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+// hospital icon
+
+export const hospitalIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: hospitalImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+// pharmacy icon
+export const pharamcyIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: pharmacyImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
+
+//bar icon
+
+export const barsIcon = L.icon({
+
+  iconSize: [33, 44],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl: barsImg,
+  shadowAnchor: [4, 62],  // the same for the shadow
+  
+});
 export const parkIcon = L.icon({
 
     iconSize: [33, 44],

@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Navbar from './components/Navbar.js'
-import Map from './components/Map.js';
+import Navbar from './components/Navbar'
+import Map from './components/Map';
 import { Provider} from 'react-redux'
 import {store} from './store/redux'
 import Footer from './components/Footer';

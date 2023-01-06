@@ -7,7 +7,8 @@ const placeSlice = createSlice({
             "id": null,
             "name": "",
             "type":"",
-            "coordinates": null
+            "coordinates": null,
+            "icon": null
         },
         userPosition : null,
         placePosition : null
@@ -27,18 +28,22 @@ const placeSlice = createSlice({
             state.placeFindPosition.type = action.payload[0].type;
             state.placeFindPosition.name = action.payload[0].name;
             state.placeFindPosition.coordinates = action.payload[0].coordinates;
-            
+            state.placeFindPosition.icon = action.payload[0].icon;
             //console.log("position :",state.userPosition)
             state.placePosition = state.placeFindPosition.coordinates;
 
             return state;
             
+        },
+        changeRoute : (state, action) =>{
+            state.placePosition = action.payload
         }
+
     }
 
 });
 
-export const { getUserPosition ,searchPlace } = placeSlice.actions;
+export const { getUserPosition ,searchPlace,changeRoute } = placeSlice.actions;
 
 export const store = configureStore({
     

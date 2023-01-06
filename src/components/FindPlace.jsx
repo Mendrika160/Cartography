@@ -23,7 +23,6 @@ function FindPlace({places,goHere,startHere}) {
                     imgIcon={greenIcon} 
                     textPopup={places.name}
                     goHere={goHere}
-                    startHere={startHere}
                 />
             
         </>

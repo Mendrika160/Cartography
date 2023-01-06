@@ -1,6 +1,5 @@
 import { useEffect,useRef } from "react";
 import L from "leaflet";
-import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import { useMap } from "react-leaflet";
@@ -63,15 +62,7 @@ const Routing = ({ from, to }) => {
 
   return null;
 
-};
-
-export const goHere = (routingControl) => {
 
 }
-
-export const startHere = () => {
-    
-}
-
 
 export default Routing;
