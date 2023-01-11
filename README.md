@@ -5,5 +5,6 @@
 * npm start  
 
 # Fonctionality  
-1 Search a place by name (ex : Zomatel ,...) We use  Geojson here(you can find this data in  src/data/map.json)  
-2 make the route from my current position to the place found.  
+1 Search a place by name (ex : Zomatel ,...) We use json file here(you can find this data in  src/data/places.json) 
+2 Filter place by type (hotel, Transport, etc...) By layersControl 
+3 make the route from my current position to the place found.  
